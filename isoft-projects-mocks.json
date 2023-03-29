@@ -1,0 +1,272 @@
+{
+  "uuid": "e843d96b-dd0d-418b-97cc-572f09f0f972",
+  "lastMigration": 27,
+  "name": "Isoft projects",
+  "endpointPrefix": "isoft/api",
+  "latency": 0,
+  "port": 3000,
+  "hostname": "",
+  "folders": [
+    {
+      "uuid": "f10cf521-14f0-47ed-890d-15956a53769c",
+      "name": "svis",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "folder",
+          "uuid": "5cdd8498-ffd2-44e5-9a09-a98ba3dcc88a"
+        }
+      ]
+    },
+    {
+      "uuid": "b4695356-59da-4da0-8f89-b88641333e4f",
+      "name": "cis",
+      "collapsed": false,
+      "children": []
+    },
+    {
+      "uuid": "5cdd8498-ffd2-44e5-9a09-a98ba3dcc88a",
+      "name": "appointment",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "folder",
+          "uuid": "3d543ddc-8167-4a6c-a4d4-52ea463ca745"
+        }
+      ]
+    },
+    {
+      "uuid": "3d543ddc-8167-4a6c-a4d4-52ea463ca745",
+      "name": "sms",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "folder",
+          "uuid": "bbf8fb56-05d9-443b-9a44-60d35b928cd5"
+        }
+      ]
+    },
+    {
+      "uuid": "bbf8fb56-05d9-443b-9a44-60d35b928cd5",
+      "name": "deewan",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "route",
+          "uuid": "a14ad569-3769-45fd-8518-378ca1e93738"
+        },
+        {
+          "type": "route",
+          "uuid": "30cf7bde-9332-499c-a2bb-984f6ef99be4"
+        },
+        {
+          "type": "route",
+          "uuid": "bcf90738-d90c-4acc-9691-a6249932f37a"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "uuid": "a14ad569-3769-45fd-8518-378ca1e93738",
+      "type": "http",
+      "documentation": "Send an OTP code to the recipient’s phone number",
+      "method": "post",
+      "endpoint": "sms/apis.deewan.sa/verify/v2/verifications",
+      "responses": [
+        {
+          "uuid": "a4256f02-511a-453c-a9a3-77209b7d69ad",
+          "body": "{\n  \"status\": 201,\n  \"replyMessage\": \"[Request handled successfully] Passcode Sent\",\n  \"requestId\": \"32a6d7340-405e-11ea-9ffd-47489e6dbc08\",\n  \"requestTime\": \"2022-01-26T19:06:30.912\",\n  \"data\": {\n    \"checkCode\": \"NUAGYJBQMAYDSXAD\"\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "32e1284e-077c-4b1a-b50e-50ed9ac5ce38",
+          "body": "{\n  \"status\": 400,\n  \"requestId\": \"86e4c94e-dbd8-43e2-9761-8670fb95af6b\",\n  \"replyCode\": 0,\n  \"requestTime\": \"2022-02-07T14:08:55.478\",\n  \"replyMessage\": \"[Request failed]\",\n  \"data\": {},\n  \"error\": \"recipientIdentifier field allows only international phone number format: (eg: +1xxxxxxxxxxx).\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "number",
+              "value": "^.*00000.*$",
+              "invert": false,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "30cf7bde-9332-499c-a2bb-984f6ef99be4",
+      "type": "http",
+      "documentation": "Validates the received OTP from your user with the check code returned from the \"Send OTP\" API.",
+      "method": "put",
+      "endpoint": "sms/apis.deewan.sa/verify/v2/verifications",
+      "responses": [
+        {
+          "uuid": "03ce5fd3-8557-4611-a20f-402f50b4bf5d",
+          "body": "{\n  \"status\": 200,\n  \"replyMessage\": \"[Request handled successfully]\",\n  \"requestId\": \"32a6d800-405e-11ea-9ffd-47489e6dbc08\",\n  \"replyCode\": 0,\n  \"requestTime\": \"2022-01-26T19:06:30.912\",\n  \"data\": {\n    \"otpPasscodeStatus\": 1\n  }\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "06a2ba1c-85d2-46db-8eac-446f13b0634b",
+          "body": "{\n  \"status\": 401,\n  \"replyMessage\": \"[Request failed] \",\n  \"requestId\": \"34a6e500-405e-11ea-9ffd-47489e6dbc08\",\n  \"requestTime\": \"2022-01-26T19:08:30.912\",\n  \"data\": {},\n  \"error\": \"Unauthoized\"\n}",
+          "latency": 0,
+          "statusCode": 401,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "passCode",
+              "value": "^.*00000.*$",
+              "invert": false,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bcf90738-d90c-4acc-9691-a6249932f37a",
+      "type": "http",
+      "documentation": "Use messages endpoint to send Single or Bulk SMS. When you send SMS messages using this API, the API will return to you the sent messages’ ID to track them later using Deewan Get Message Details by ID API.",
+      "method": "post",
+      "endpoint": "sms/apis.deewan.sa/sms/v1/messages",
+      "responses": [
+        {
+          "uuid": "1c6bc9bb-472f-4501-937e-c523ee8e24aa",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "696e6609-f036-4e39-8ea9-39328904e6c4",
+          "body": "{\n  \"status\": 401,\n  \"replyMessage\": \"[Request failed] \",\n  \"requestId\": \"34a6e500-405e-11ea-9ffd-47489e6dbc08\",\n  \"requestTime\": \"2022-01-26T19:08:30.912\",\n  \"data\": {},\n  \"error\": \"Unauthoized\"\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "body",
+              "modifier": "recipients",
+              "value": "^.*00000.*$",
+              "invert": false,
+              "operator": "regex"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    }
+  ],
+  "rootChildren": [
+    {
+      "type": "folder",
+      "uuid": "f10cf521-14f0-47ed-890d-15956a53769c"
+    },
+    {
+      "type": "folder",
+      "uuid": "b4695356-59da-4da0-8f89-b88641333e4f"
+    }
+  ],
+  "proxyMode": false,
+  "proxyHost": "",
+  "proxyRemovePrefix": false,
+  "tlsOptions": {
+    "enabled": false,
+    "type": "CERT",
+    "pfxPath": "",
+    "certPath": "",
+    "keyPath": "",
+    "caPath": "",
+    "passphrase": ""
+  },
+  "cors": true,
+  "headers": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "proxyReqHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "proxyResHeaders": [
+    {
+      "key": "",
+      "value": ""
+    }
+  ],
+  "data": []
+}
