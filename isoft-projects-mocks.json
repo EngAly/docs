@@ -10,7 +10,7 @@
     {
       "uuid": "f10cf521-14f0-47ed-890d-15956a53769c",
       "name": "svis",
-      "collapsed": false,
+      "collapsed": true,
       "children": [
         {
           "type": "folder",
@@ -21,7 +21,7 @@
     {
       "uuid": "b4695356-59da-4da0-8f89-b88641333e4f",
       "name": "cis",
-      "collapsed": false,
+      "collapsed": true,
       "children": [
         {
           "type": "folder",
@@ -32,7 +32,7 @@
     {
       "uuid": "5cdd8498-ffd2-44e5-9a09-a98ba3dcc88a",
       "name": "appointment",
-      "collapsed": true,
+      "collapsed": false,
       "children": [
         {
           "type": "folder",
@@ -43,7 +43,7 @@
     {
       "uuid": "3d543ddc-8167-4a6c-a4d4-52ea463ca745",
       "name": "sms",
-      "collapsed": false,
+      "collapsed": true,
       "children": [
         {
           "type": "folder",
@@ -54,7 +54,7 @@
     {
       "uuid": "bbf8fb56-05d9-443b-9a44-60d35b928cd5",
       "name": "deewan",
-      "collapsed": false,
+      "collapsed": true,
       "children": [
         {
           "type": "route",
@@ -75,6 +75,17 @@
       "name": "inspection",
       "collapsed": false,
       "children": []
+    },
+    {
+      "uuid": "9b6ce21f-f287-4f4a-a79b-5d1f67ceac4d",
+      "name": "test",
+      "collapsed": false,
+      "children": [
+        {
+          "type": "route",
+          "uuid": "bf5369d4-4427-47c9-b0c9-b80de26dd678"
+        }
+      ]
     }
   ],
   "routes": [
@@ -236,6 +247,34 @@
       ],
       "enabled": true,
       "responseMode": null
+    },
+    {
+      "uuid": "bf5369d4-4427-47c9-b0c9-b80de26dd678",
+      "type": "http",
+      "documentation": "",
+      "method": "get",
+      "endpoint": "test/ping",
+      "responses": [
+        {
+          "uuid": "ef266e4d-9c44-4fab-a4a9-0dd5e7e73aab",
+          "body": "{\n  \"currentDate\":{{now}}\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
     }
   ],
   "rootChildren": [
@@ -246,6 +285,10 @@
     {
       "type": "folder",
       "uuid": "b4695356-59da-4da0-8f89-b88641333e4f"
+    },
+    {
+      "type": "folder",
+      "uuid": "9b6ce21f-f287-4f4a-a79b-5d1f67ceac4d"
     }
   ],
   "proxyMode": false,
