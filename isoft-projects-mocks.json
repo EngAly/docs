@@ -22,12 +22,17 @@
       "uuid": "b4695356-59da-4da0-8f89-b88641333e4f",
       "name": "cis",
       "collapsed": false,
-      "children": []
+      "children": [
+        {
+          "type": "folder",
+          "uuid": "a55e1f67-206d-4828-a4a2-b04d7de0ea1c"
+        }
+      ]
     },
     {
       "uuid": "5cdd8498-ffd2-44e5-9a09-a98ba3dcc88a",
       "name": "appointment",
-      "collapsed": false,
+      "collapsed": true,
       "children": [
         {
           "type": "folder",
@@ -64,6 +69,12 @@
           "uuid": "bcf90738-d90c-4acc-9691-a6249932f37a"
         }
       ]
+    },
+    {
+      "uuid": "a55e1f67-206d-4828-a4a2-b04d7de0ea1c",
+      "name": "inspection",
+      "collapsed": false,
+      "children": []
     }
   ],
   "routes": [
