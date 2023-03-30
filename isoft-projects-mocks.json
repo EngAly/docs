@@ -1,6 +1,6 @@
 {
   "uuid": "e843d96b-dd0d-418b-97cc-572f09f0f972",
-  "lastMigration": 27,
+  "lastMigration": 13,
   "name": "Isoft projects",
   "endpointPrefix": "isoft/api",
   "latency": 0,
@@ -10,7 +10,7 @@
     {
       "uuid": "f10cf521-14f0-47ed-890d-15956a53769c",
       "name": "svis",
-      "collapsed": true,
+      "collapsed": false,
       "children": [
         {
           "type": "folder",
@@ -43,7 +43,7 @@
     {
       "uuid": "3d543ddc-8167-4a6c-a4d4-52ea463ca745",
       "name": "sms",
-      "collapsed": true,
+      "collapsed": false,
       "children": [
         {
           "type": "folder",
@@ -54,7 +54,7 @@
     {
       "uuid": "bbf8fb56-05d9-443b-9a44-60d35b928cd5",
       "name": "deewan",
-      "collapsed": true,
+      "collapsed": false,
       "children": [
         {
           "type": "route",

@@ -1,0 +1,8 @@
+version: "3"
+services:
+  mockoon:
+    image: mockoon/cli:latest
+    container_name: mockoon
+    ports:
+      - "3001:3001"
+    command: mockoon-cli start -d https://raw.githubusercontent.com/mockoon/mock-samples/main/samples/generate-mock-data.json
