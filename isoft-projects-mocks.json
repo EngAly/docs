@@ -1,6 +1,6 @@
 {
   "uuid": "e843d96b-dd0d-418b-97cc-572f09f0f972",
-  "lastMigration": 13,
+  "lastMigration": 27,
   "name": "Isoft projects",
   "endpointPrefix": "isoft/api",
   "latency": 0,
