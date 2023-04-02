@@ -1,8 +1,0 @@
-version: "3"
-services:
-  mockoon:
-    image: mockoon/cli:2.3.0
-    container_name: mockoon
-    ports:
-      - "3000:3000"
-    command: mockoon-cli start -d https://raw.githubusercontent.com/EngAly/docs/master/isoft-projects-mocks.json
