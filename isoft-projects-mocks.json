@@ -10,7 +10,7 @@
     {
       "uuid": "f10cf521-14f0-47ed-890d-15956a53769c",
       "name": "svis",
-      "collapsed": true,
+      "collapsed": false,
       "children": [
         {
           "type": "folder",
@@ -346,7 +346,7 @@
       "type": "http",
       "documentation": "Get Qm Supervisor Object ",
       "method": "get",
-      "endpoint": "cis/inspection/qmSupervisor?vtcid=18",
+      "endpoint": "cis/inspection/qm/qmSupervisor?vtcid=18",
       "responses": [
         {
           "uuid": "7f4ed049-0425-4b37-8ca2-e9bd13569d2a",
@@ -374,7 +374,7 @@
       "type": "http",
       "documentation": "Get Escalated Vehicles",
       "method": "get",
-      "endpoint": "cis/inspection/escalatedVehicles?vtcid=20",
+      "endpoint": "cis/inspection/qm/escalatedVehicles?vtcid=20",
       "responses": [
         {
           "uuid": "498f16e8-64eb-4e8f-a9b4-2462bb0d201a",
@@ -402,7 +402,7 @@
       "type": "http",
       "documentation": "get Vehicles (no show) on vtc",
       "method": "get",
-      "endpoint": "cis/inspection/vtc?noShow=true&vtcId=18",
+      "endpoint": "cis/inspection/qm/vtc?noShow=true&vtcId=18",
       "responses": [
         {
           "uuid": "a75f7dbf-37d5-49b2-ac1d-3dddeedeb771",
@@ -430,7 +430,7 @@
       "type": "http",
       "documentation": "get Vehicles (no show/'under Inspection and queue') on lane",
       "method": "get",
-      "endpoint": "cis/inspection/lane?laneId=2027&noShow=false",
+      "endpoint": "cis/inspection/qm/lane?laneId=2027&noShow=false",
       "responses": [
         {
           "uuid": "ddd6558a-4a45-4e49-a7f5-bff92067e893",
@@ -458,7 +458,7 @@
       "type": "http",
       "documentation": "get Vehicles By Stage (Queue/UnderInspection) if stageNo =01 then this is Queue Stage",
       "method": "get",
-      "endpoint": "cis/inspection/stage?laneId=2027&phaseType=2&stageNo=2",
+      "endpoint": "cis/inspection/qm/stage?laneId=2027&phaseType=2&stageNo=2",
       "responses": [
         {
           "uuid": "80d96da2-e894-4e36-8d1e-b0a00629e4c9",
@@ -486,7 +486,7 @@
       "type": "http",
       "documentation": "get Active Lanes By VtcId",
       "method": "get",
-      "endpoint": "cis/inspection/lnes?vtcId=18",
+      "endpoint": "cis/inspection/qm/lnes?vtcId=18",
       "responses": [
         {
           "uuid": "9f4d97bc-7471-4135-9e97-5127c671c887",
@@ -514,7 +514,7 @@
       "type": "http",
       "documentation": "",
       "method": "get",
-      "endpoint": "cis/inspection/lanes/2027/tests?stageNo=2",
+      "endpoint": "cis/inspection/qm/lanes/2027/tests?stageNo=2",
       "responses": [
         {
           "uuid": "2d1c811d-3408-4770-b035-591381ff6bb2",
@@ -542,7 +542,7 @@
       "type": "http",
       "documentation": "getLaneTests",
       "method": "get",
-      "endpoint": "cis/inspection/lanes/2027/tests",
+      "endpoint": "cis/inspection/qm/lanes/2027/tests",
       "responses": [
         {
           "uuid": "f471a88c-1f91-419f-a0d8-99c2a4e7b5c9",
