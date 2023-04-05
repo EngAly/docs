@@ -2,7 +2,7 @@
   "uuid": "e843d96b-dd0d-418b-97cc-572f09f0f972",
   "lastMigration": 27,
   "name": "Isoft projects",
-  "endpointPrefix": "isoft/api",
+  "endpointPrefix": "cis-api",
   "latency": 0,
   "port": 3000,
   "hostname": "",
@@ -106,13 +106,33 @@
         {
           "type": "route",
           "uuid": "316375a5-9766-479c-9d90-9dd4b0151635"
+        },
+        {
+          "type": "route",
+          "uuid": "75f90989-663b-4d62-afc8-ce0c62df1566"
+        },
+        {
+          "type": "route",
+          "uuid": "785e71c2-602b-491f-9e12-f29b176fe23c"
+        },
+        {
+          "type": "route",
+          "uuid": "1ec38899-b045-4476-b719-299ae3451575"
+        },
+        {
+          "type": "route",
+          "uuid": "7f4239df-aa4c-43e2-b510-791a9b24e218"
+        },
+        {
+          "type": "route",
+          "uuid": "5ee987c9-a7fc-413a-980a-5d00aa0f4ef9"
         }
       ]
     },
     {
       "uuid": "9b6ce21f-f287-4f4a-a79b-5d1f67ceac4d",
       "name": "test",
-      "collapsed": false,
+      "collapsed": true,
       "children": [
         {
           "type": "route",
@@ -131,7 +151,7 @@
       "type": "http",
       "documentation": "Send an OTP code to the recipient’s phone number",
       "method": "post",
-      "endpoint": "sms/apis.deewan.sa/verify/v2/verifications",
+      "endpoint": "svis/external/sms/apis.deewan.sa/verify/v2/verifications",
       "responses": [
         {
           "uuid": "a4256f02-511a-453c-a9a3-77209b7d69ad",
@@ -184,7 +204,7 @@
       "type": "http",
       "documentation": "Validates the received OTP from your user with the check code returned from the \"Send OTP\" API.",
       "method": "put",
-      "endpoint": "sms/apis.deewan.sa/verify/v2/verifications",
+      "endpoint": "svis/external/sms/apis.deewan.sa/verify/v2/verifications",
       "responses": [
         {
           "uuid": "03ce5fd3-8557-4611-a20f-402f50b4bf5d",
@@ -237,7 +257,7 @@
       "type": "http",
       "documentation": "Use messages endpoint to send Single or Bulk SMS. When you send SMS messages using this API, the API will return to you the sent messages’ ID to track them later using Deewan Get Message Details by ID API.",
       "method": "post",
-      "endpoint": "sms/apis.deewan.sa/sms/v1/messages",
+      "endpoint": "svis/external/sms/apis.deewan.sa/sms/v1/messages",
       "responses": [
         {
           "uuid": "1c6bc9bb-472f-4501-937e-c523ee8e24aa",
@@ -564,9 +584,286 @@
       ],
       "enabled": true,
       "responseMode": null
+    },
+    {
+      "uuid": "75f90989-663b-4d62-afc8-ce0c62df1566",
+      "type": "http",
+      "documentation": "move vehicle to no show queue",
+      "method": "post",
+      "endpoint": "inspection/qm/:laneVehicleId/noShow",
+      "responses": [
+        {
+          "uuid": "99c1e23f-0901-4814-a439-59515f96413c",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "159125d7-9096-4446-a381-901abe7cec26",
+          "body": "{\n    \"responseType\": 3,\n    \"messages\": null,\n    \"exceptionList\": [\n        {\n            \"type\": 8,\n            \"exceptionCode\": null,\n            \"msgEn\": {\n                \"title\": null,\n                \"message\": \"Service is unavailable temporarily, kindly contact technical support. Issue reference is: 4,290,904,383\"\n            },\n            \"msgAr\": {\n                \"title\": null,\n                \"message\": \"Service is unavailable temporarily, kindly contact technical support. Issue reference is: 4,290,904,383\"\n            }\n        }\n    ],\n    \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "laneVehicleId",
+              "value": "00000",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "785e71c2-602b-491f-9e12-f29b176fe23c",
+      "type": "http",
+      "documentation": "return vehicle to queue",
+      "method": "post",
+      "endpoint": "inspection/qm/:laneVehicleId/queue",
+      "responses": [
+        {
+          "uuid": "68737695-c20f-4400-81c9-80bc199397eb",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "6c7629eb-d42b-4f4f-bee0-0453dd00299c",
+          "body": "{\n    \"responseType\": 3,\n    \"messages\": null,\n    \"exceptionList\": [\n        {\n            \"type\": 8,\n            \"exceptionCode\": null,\n            \"msgEn\": {\n                \"title\": null,\n                \"message\": \"Service is unavailable temporarily, kindly contact technical support. Issue reference is: 4,290,904,383\"\n            },\n            \"msgAr\": {\n                \"title\": null,\n                \"message\": \"Service is unavailable temporarily, kindly contact technical support. Issue reference is: 4,290,904,383\"\n            }\n        }\n    ],\n    \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "laneVehicleId",
+              "value": "00000",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "1ec38899-b045-4476-b719-299ae3451575",
+      "type": "http",
+      "documentation": "move vehicle to specific lane",
+      "method": "post",
+      "endpoint": "inspection/qm/:laneVehicleId/lanes/:targetLaneId",
+      "responses": [
+        {
+          "uuid": "86c2d747-59f4-413e-b35f-b4bcae2310ae",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "c869de96-b19c-4f31-a478-b7ec0ba66d6c",
+          "body": "{\n    \"responseType\": 3,\n    \"messages\": null,\n    \"exceptionList\": [\n        {\n            \"type\": 8,\n            \"exceptionCode\": null,\n            \"msgEn\": {\n                \"title\": null,\n                \"message\": \"Service is unavailable temporarily, kindly contact technical support. Issue reference is: 4,290,904,383\"\n            },\n            \"msgAr\": {\n                \"title\": null,\n                \"message\": \"Service is unavailable temporarily, kindly contact technical support. Issue reference is: 4,290,904,383\"\n            }\n        }\n    ],\n    \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "laneVehicleId",
+              "value": "00000",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "7f4239df-aa4c-43e2-b510-791a9b24e218",
+      "type": "http",
+      "documentation": "eject vehicle to queue",
+      "method": "post",
+      "endpoint": "inspection/qm/:laneVehicleId/eject",
+      "responses": [
+        {
+          "uuid": "3fcc6581-fbc0-492a-8696-226b3f9756fa",
+          "body": "",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "1232138c-f43b-4597-8114-5e251af42d4d",
+          "body": "{\n    \"responseType\": 3,\n    \"messages\": null,\n    \"exceptionList\": [\n        {\n            \"type\": 8,\n            \"exceptionCode\": null,\n            \"msgEn\": {\n                \"title\": null,\n                \"message\": \"Service is unavailable temporarily, kindly contact technical support. Issue reference is: 4,290,904,383\"\n            },\n            \"msgAr\": {\n                \"title\": null,\n                \"message\": \"Service is unavailable temporarily, kindly contact technical support. Issue reference is: 4,290,904,383\"\n            }\n        }\n    ],\n    \"data\": null\n}",
+          "latency": 0,
+          "statusCode": 400,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "laneVehicleId",
+              "value": "00000",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "5ee987c9-a7fc-413a-980a-5d00aa0f4ef9",
+      "type": "http",
+      "documentation": "get inspection remark by type",
+      "method": "get",
+      "endpoint": "inspection/qm/inspectionRemarks/:inspectionRemarksType",
+      "responses": [
+        {
+          "uuid": "13c95e06-2b95-4637-8771-379cb835710d",
+          "body": "{\n    \"status\": \"SUCCESS\",\n    \"data\": [\n        {\n            \"id\": 10,\n            \"contentEn\": \"Other\",\n            \"contentAr\": \"أخرى\",\n            \"status\": \"1\",\n            \"typeEnum\": \"PAYMENT_NO_SHOW\",\n            \"needCancelRequestEnum\": \"DISABLED\"\n        }\n    ],\n    \"exceptionList\": null,\n    \"timestamp\": \"2023-04-04T11:53:25.693Z\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "inspectionRemarksType",
+              "value": "PAYMENT_NO_SHOW",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        },
+        {
+          "uuid": "2b7680cb-1239-4ef4-be04-32a19d315155",
+          "body": "{\n    \"status\": \"SUCCESS\",\n    \"data\": [\n        {\n            \"id\": 9,\n            \"contentEn\": \"Other\",\n            \"contentAr\": \"أخرى\",\n            \"status\": \"1\",\n            \"typeEnum\": \"INSPECTION_NO_SHOW\",\n            \"needCancelRequestEnum\": \"DISABLED\"\n        },\n        {\n            \"id\": 11,\n            \"contentEn\": \"Other1\",\n            \"contentAr\": \"أخرى\",\n            \"status\": \"1\",\n            \"typeEnum\": \"INSPECTION_NO_SHOW\",\n            \"needCancelRequestEnum\": \"DISABLED\"\n        }\n    ],\n    \"exceptionList\": null,\n    \"timestamp\": \"2023-04-04T11:57:05.155Z\"\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [
+            {
+              "target": "params",
+              "modifier": "inspectionRemarksType",
+              "value": "INSPECTION_NO_SHOW",
+              "invert": false,
+              "operator": "equals"
+            }
+          ],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": false
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
     }
   ],
   "rootChildren": [
+    {
+      "type": "folder",
+      "uuid": "9b6ce21f-f287-4f4a-a79b-5d1f67ceac4d"
+    },
     {
       "type": "folder",
       "uuid": "f10cf521-14f0-47ed-890d-15956a53769c"
@@ -574,10 +871,6 @@
     {
       "type": "folder",
       "uuid": "b4695356-59da-4da0-8f89-b88641333e4f"
-    },
-    {
-      "type": "folder",
-      "uuid": "9b6ce21f-f287-4f4a-a79b-5d1f67ceac4d"
     }
   ],
   "proxyMode": false,
