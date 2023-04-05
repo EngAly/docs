@@ -514,7 +514,7 @@
       "type": "http",
       "documentation": "Get Lane Test",
       "method": "get",
-      "endpoint": "cis/inspection/lanes/2027/laneTests",
+      "endpoint": "cis/inspection/lanes/laneTests",
       "responses": [
         {
           "uuid": "2d1c811d-3408-4770-b035-591381ff6bb2",
