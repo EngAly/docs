@@ -93,10 +93,6 @@
         },
         {
           "type": "route",
-          "uuid": "491cd2ab-49d7-4cea-a668-7b690bef85e3"
-        },
-        {
-          "type": "route",
           "uuid": "f1032a5c-1eae-47b8-91f4-c72b5511bb7c"
         },
         {
@@ -126,6 +122,14 @@
         {
           "type": "route",
           "uuid": "7e7bc08e-f789-43fb-9fc0-da4380d1ff9b"
+        },
+        {
+          "type": "route",
+          "uuid": "4f6ff756-c25c-4374-957c-3829cf499187"
+        },
+        {
+          "type": "route",
+          "uuid": "bfb14a46-0c2a-4c73-9648-58a603099535"
         }
       ]
     },
@@ -422,7 +426,7 @@
       "type": "http",
       "documentation": "get Vehicles (no show) on vtc",
       "method": "get",
-      "endpoint": "cis/inspection/qm/vtc",
+      "endpoint": "cis/inspection/qm/vehiclesByStage",
       "responses": [
         {
           "uuid": "a75f7dbf-37d5-49b2-ac1d-3dddeedeb771",
@@ -450,7 +454,7 @@
       "type": "http",
       "documentation": "get Vehicles (no show/'under Inspection and queue') on lane",
       "method": "get",
-      "endpoint": "cis/inspection/qm/lane",
+      "endpoint": "cis/inspection/qm/vehiclesByLane",
       "responses": [
         {
           "uuid": "ddd6558a-4a45-4e49-a7f5-bff92067e893",
@@ -474,39 +478,11 @@
       "responseMode": null
     },
     {
-      "uuid": "491cd2ab-49d7-4cea-a668-7b690bef85e3",
-      "type": "http",
-      "documentation": "get Vehicles By Stage (Queue/UnderInspection) if stageNo =01 then this is Queue Stage",
-      "method": "get",
-      "endpoint": "cis/inspection/qm/stage",
-      "responses": [
-        {
-          "uuid": "80d96da2-e894-4e36-8d1e-b0a00629e4c9",
-          "body": "{\n  \"responseType\": 1,\n  \"messages\": [\n    {\n      \"type\": 1,\n      \"msgEn\": {\n        \"title\": \"Created Successfully\",\n        \"message\": \"The record has been created successfully\"\n      },\n      \"msgAr\": {\n        \"title\": \"Created Successfully\",\n        \"message\": \"The record has been created successfully\"\n      }\n    }\n  ],\n  \"exceptionList\": null,\n  \"data\": [\n    {\n      \"id\": 16506893,\n      \"transactionId\": 14746207,\n      \"makeYear\": 2015,\n      \"vehicleClass\": 3,\n      \"appointment\": false,\n      \"shadow\": true,\n      \"chassisNumber\": \"LN7AL5AP6FE516258\",\n      \"plateNumber\": \"10142\",\n      \"transactionStatus\": 7,\n      \"vehicleModel\": {\n        \"id\": 310000001822,\n        \"code\": \"310000001822\",\n        \"nameEn\": \"ALTIMA\",\n        \"nameAr\": \"التيما\"\n      },\n      \"vehicleMake\": {\n        \"id\": 10188,\n        \"code\": \"10188\",\n        \"nameEn\": \"NISSAN\",\n        \"nameAr\": \"نيسان\"\n      },\n      \"laneId\": 2027,\n      \"colors\": [\n        {\n          \"code\": \"10\",\n          \"hexiCode\": null,\n          \"name\": {\n            \"en\": \"Blue\",\n            \"ar\": \"ازرق\"\n          }\n        }\n      ],\n      \"phase\": {\n        \"id\": 73656567,\n        \"stageNo\": 0,\n        \"elapsedTime\": 1234,\n        \"exceedTime\": true,\n        \"type\": 2,\n        \"inspectors\": []\n      }\n    }\n  ]\n}",
-          "latency": 0,
-          "statusCode": 200,
-          "label": "",
-          "headers": [],
-          "bodyType": "INLINE",
-          "filePath": "",
-          "databucketID": "",
-          "sendFileAsBody": false,
-          "rules": [],
-          "rulesOperator": "OR",
-          "disableTemplating": false,
-          "fallbackTo404": false,
-          "default": true
-        }
-      ],
-      "enabled": true,
-      "responseMode": null
-    },
-    {
       "uuid": "f1032a5c-1eae-47b8-91f4-c72b5511bb7c",
       "type": "http",
       "documentation": "get Active Lanes By VtcId",
       "method": "get",
-      "endpoint": "cis/inspection/qm/lnes",
+      "endpoint": "cis/inspection/qm/activeLanesByVtcId",
       "responses": [
         {
           "uuid": "9f4d97bc-7471-4135-9e97-5127c671c887",
@@ -532,9 +508,9 @@
     {
       "uuid": "3bc1f403-d41e-431a-8181-00b390259094",
       "type": "http",
-      "documentation": "",
+      "documentation": "Get Lane Test",
       "method": "get",
-      "endpoint": "cis/inspection/qm/lanes/2027/tests",
+      "endpoint": "cis/inspection/qm/lanes/2027/LaneTests",
       "responses": [
         {
           "uuid": "2d1c811d-3408-4770-b035-591381ff6bb2",
@@ -562,7 +538,7 @@
       "type": "http",
       "documentation": "move vehicle to no show queue",
       "method": "post",
-      "endpoint": "inspection/qm/:laneVehicleId/noShow",
+      "endpoint": "inspection/qm/moveVehicleToNoShow/:laneVehicleId",
       "responses": [
         {
           "uuid": "99c1e23f-0901-4814-a439-59515f96413c",
@@ -615,7 +591,7 @@
       "type": "http",
       "documentation": "return vehicle to queue",
       "method": "post",
-      "endpoint": "inspection/qm/:laneVehicleId/queue",
+      "endpoint": "inspection/qm/returnVehicleToQueue/:laneVehicleId",
       "responses": [
         {
           "uuid": "68737695-c20f-4400-81c9-80bc199397eb",
@@ -668,7 +644,7 @@
       "type": "http",
       "documentation": "move vehicle to specific lane",
       "method": "post",
-      "endpoint": "inspection/qm/:laneVehicleId/lanes/:targetLaneId",
+      "endpoint": "inspection/qm/moveVehicleToLane/:laneVehicleId/lanes/:targetLaneId",
       "responses": [
         {
           "uuid": "86c2d747-59f4-413e-b35f-b4bcae2310ae",
@@ -721,7 +697,7 @@
       "type": "http",
       "documentation": "eject vehicle to queue",
       "method": "post",
-      "endpoint": "inspection/qm/:laneVehicleId/eject",
+      "endpoint": "inspection/qm/ejectVehicle/:laneVehicleId",
       "responses": [
         {
           "uuid": "3fcc6581-fbc0-492a-8696-226b3f9756fa",
@@ -840,6 +816,62 @@
         {
           "uuid": "165b5861-2c9d-4f30-9002-2ebbf5c16639",
           "body": "{\r\n\"actions\": {\r\n\"viewEscalated\": true,\r\n\"returnToStage\": true,\r\n\"eject\": true,\r\n\"addTest\": true,\r\n\"cancelTransaction\": true,\r\n\"noShow\": true\r\n},\r\n\"overview\": {\r\n\"testingHistory\": true,\r\n\"circulars\": true,\r\n\"committe\": true,\r\n\"odometer\": true,\r\n\"modification\": true,\r\n\"repunch\": true\r\n}\r\n}\r\n{\r\n\"actions\": {\r\n\"viewEscalated\": true,\r\n\"returnToStage\": true,\r\n\"eject\": true,\r\n\"addTest\": true,\r\n\"cancelTransaction\": true,\r\n\"noShow\": true\r\n},\r\n\"overview\": {\r\n\"testingHistory\": true,\r\n\"circulars\": true,\r\n\"committe\": true,\r\n\"odometer\": true,\r\n\"modification\": true,\r\n\"repunch\": true\r\n}\r\n}",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "4f6ff756-c25c-4374-957c-3829cf499187",
+      "type": "http",
+      "documentation": "Get All VTp",
+      "method": "get",
+      "endpoint": "cis/vtp/partners",
+      "responses": [
+        {
+          "uuid": "00c6a4c4-4dfe-4269-9e85-d4c448eb6c97",
+          "body": "[\n  {\n    \"id\": 15,\n    \"nameDTO\": {\n      \"en\": \"Platinum CWK\",\n      \"ar\": \"بلاتينيوم سي دبليو كيه\"\n    }\n  },\n  {\n    \"id\": 19,\n    \"nameDTO\": {\n      \"en\": \"Dubai Government Workshop\",\n      \"ar\": \"ورشة حكومة دبي\"\n    }\n  },\n  {\n    \"id\": 5,\n    \"nameDTO\": {\n      \"en\": \"Wasel\",\n      \"ar\": \"واصل\"\n    }\n  },\n  {\n    \"id\": 10,\n    \"nameDTO\": {\n      \"en\": \"Quick Registration\",\n      \"ar\": \"كويك للتسجيل\"\n    }\n  },\n  {\n    \"id\": 14,\n    \"nameDTO\": {\n      \"en\": \"Gargash Motors & General Trading\",\n      \"ar\": \"قرقاش للسيارات و التجارة العامة\"\n    }\n  },\n  {\n    \"id\": 16,\n    \"nameDTO\": {\n      \"en\": \"Al Futtaim Enterprises\",\n      \"ar\": \"مشاريع الفطيم\"\n    }\n  },\n  {\n    \"id\": 17,\n    \"nameDTO\": {\n      \"en\": \"DP World UAE\",\n      \"ar\": \"موانئ دبي العالمية إقليم الامارات\"\n    }\n  },\n  {\n    \"id\": 23,\n    \"nameDTO\": {\n      \"en\": \"Al Mutakamela Vehicle Testing LLC\",\n      \"ar\": \"المتكاملة لفحص المركبات\"\n    }\n  },\n  {\n    \"id\": 24,\n    \"nameDTO\": {\n      \"en\": \"Tajdeed Vehicles Testing\",\n      \"ar\": \"تجديد لفحص السيارات\"\n    }\n  },\n  {\n    \"id\": 1,\n    \"nameDTO\": {\n      \"en\": \"Pal Auto Garage\",\n      \"ar\": \"بال أوتو جراج\"\n    }\n  },\n  {\n    \"id\": 2,\n    \"nameDTO\": {\n      \"en\": \"Al Shirawi Enterprises\",\n      \"ar\": \"مشاريع الشيراوي\"\n    }\n  },\n  {\n    \"id\": 4,\n    \"nameDTO\": {\n      \"en\": \"Al Mumayaz\",\n      \"ar\": \"المميز\"\n    }\n  },\n  {\n    \"id\": 7,\n    \"nameDTO\": {\n      \"en\": \"Support\",\n      \"ar\": \"الدعم الفني\"\n    }\n  },\n  {\n    \"id\": 9,\n    \"nameDTO\": {\n      \"en\": \"Tasjeel\",\n      \"ar\": \"تسجيل\"\n    }\n  },\n  {\n    \"id\": 11,\n    \"nameDTO\": {\n      \"en\": \"Speedfit Vehicle Parts and Fast Service L.L.C\",\n      \"ar\": \"سبيد فيت لفحص السيارات\"\n    }\n  },\n  {\n    \"id\": 20,\n    \"nameDTO\": {\n      \"en\": \"Dubai Taxi Corporation\",\n      \"ar\": \"مؤسسة تاكسي دبي\"\n    }\n  },\n  {\n    \"id\": 21,\n    \"nameDTO\": {\n      \"en\": \"Liberty Automobile Company L.L.C\",\n      \"ar\": \"شركة ليبرتي للسيارات ش.ذ.م.م\"\n    }\n  },\n  {\n    \"id\": 3,\n    \"nameDTO\": {\n      \"en\": \"AG Cars\",\n      \"ar\": \"ايه جي كارس\"\n    }\n  },\n  {\n    \"id\": 12,\n    \"nameDTO\": {\n      \"en\": \"Arabian Autombiles\",\n      \"ar\": \"العربية للسيارات\"\n    }\n  },\n  {\n    \"id\": 13,\n    \"nameDTO\": {\n      \"en\": \"Galadari Automobiles Co.Ltd (L.L.C)\",\n      \"ar\": \"شركة كلداري للسيارات\"\n    }\n  },\n  {\n    \"id\": 18,\n    \"nameDTO\": {\n      \"en\": \"Emirates Transport\",\n      \"ar\": \"مواصلات الامارات\"\n    }\n  },\n  {\n    \"id\": 6,\n    \"nameDTO\": {\n      \"en\": \"Tamam\",\n      \"ar\": \"تمام\"\n    }\n  },\n  {\n    \"id\": 8,\n    \"nameDTO\": {\n      \"en\": \"Shamil\",\n      \"ar\": \"شامل\"\n    }\n  },\n  {\n    \"id\": 25,\n    \"nameDTO\": {\n      \"en\": \"Al Yalayis\",\n      \"ar\": \"الالياليس لفحص المركبات وتسجيلها\"\n    }\n  }\n]",
+          "latency": 0,
+          "statusCode": 200,
+          "label": "",
+          "headers": [],
+          "bodyType": "INLINE",
+          "filePath": "",
+          "databucketID": "",
+          "sendFileAsBody": false,
+          "rules": [],
+          "rulesOperator": "OR",
+          "disableTemplating": false,
+          "fallbackTo404": false,
+          "default": true
+        }
+      ],
+      "enabled": true,
+      "responseMode": null
+    },
+    {
+      "uuid": "bfb14a46-0c2a-4c73-9648-58a603099535",
+      "type": "http",
+      "documentation": "Get all Centers By VTP",
+      "method": "get",
+      "endpoint": "cis/vtp/centers",
+      "responses": [
+        {
+          "uuid": "c9cbc9fd-ebe7-4118-af53-65cb2f2fbe13",
+          "body": "[\r\n    {\r\n        \"id\": 70,\r\n        \"nameDTO\": {\r\n            \"en\": \"External Center\",\r\n            \"ar\": \"مركز فحص خارجى \"\r\n        }\r\n    }\r\n]",
           "latency": 0,
           "statusCode": 200,
           "label": "",
