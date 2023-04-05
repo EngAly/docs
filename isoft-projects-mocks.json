@@ -21,7 +21,7 @@
     {
       "uuid": "b4695356-59da-4da0-8f89-b88641333e4f",
       "name": "cis",
-      "collapsed": true,
+      "collapsed": false,
       "children": [
         {
           "type": "folder",
